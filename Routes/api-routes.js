@@ -42,7 +42,19 @@ module.exports = function(app) {
         } else {
             res.json(data);
         }
-    })
+    });
+    
+    app.put("/api/workouts/:id", function(req, res){
+        db.Workout.create({exercises: {
+            type: req.body.type,
+            name: req.body.type,
+            distance: req.body.distance,
+            duration: req.body.duration
+        }}).then(function(dbWorkouts){
+            res.json(dbWorkouts);
+        })
+        console.log(req.body);
+    });
       
 
      
